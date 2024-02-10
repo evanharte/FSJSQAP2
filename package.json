@@ -1,0 +1,12 @@
+{
+  "name": "fsjsqap2",
+  "version": "1.0.0",
+  "description": "This repository is comprised of a project completed while taking the Software Development program at Keyin College.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
