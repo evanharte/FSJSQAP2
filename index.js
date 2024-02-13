@@ -1,9 +1,25 @@
-// use the http.createServer()to build a multi-route web server with node
-
 // Import the http module
 const http = require("http");
 const routes = require("./routes");
 // const path = require("path");
+const EventEmitter = require("events");
+class MyEmitter extends EventEmitter {}
+const myEmitter = new MyEmitter();
+
+// Every time the subscribe route is accessed, subscribeEvent is emitted (a console.log stating please subscribe is logged to the console).
+myEmitter.on("subscribeEvent", () => {
+  console.log("Please subscribe");
+});
+
+// Every time the products route is accessed, buyProductEvent is emitted (a console.log stating please buy my products is logged to the console).
+myEmitter.on("buyProductEvent", () => {
+  console.log("Please buy my products");
+});
+
+// Every time the about route is accessed, aboutEvent is emitted (a console.log stating "please learn things about my products and then subscribe" is logged to the console).
+myEmitter.on("aboutEvent", () => {
+  console.log("Please learn things about my products and then subscribe");
+});
 
 // Create a server
 const server = http.createServer((request, response) => {
@@ -21,6 +37,7 @@ const server = http.createServer((request, response) => {
       console.log("About Page");
       filePath += "/about.html";
       routes.aboutPage(filePath, response);
+      myEmitter.emit("aboutEvent");
       break;
     case "/contacts":
       console.log("Contacts Page");
@@ -31,11 +48,13 @@ const server = http.createServer((request, response) => {
       console.log("Products Page");
       filePath += "/products.html";
       routes.productsPage(filePath, response);
+      myEmitter.emit("buyProductEvent");
       break;
     case "/subscribe":
       console.log("Subscribe Page");
       filePath += "/subscribe.html";
       routes.subscribePage(filePath, response);
+      myEmitter.emit("subscribeEvent");
       break;
     default:
       console.log("404 Page Not Found");
