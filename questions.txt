@@ -2,7 +2,7 @@ You are allowed to complete the assessment problems below in whatever way you ca
 
 1.	How many hours did it take you to complete this assessment? (Please keep try to keep track of how many hours you have spent working on each individual part of this assessment as best you can - an estimation is fine; we just want a rough idea.)
 
-              approx. 5 hours
+              approx. 5 hours.
 
 2.	What online resources you have used? (My lectures, YouTube, Stack overflow etc.)
   
